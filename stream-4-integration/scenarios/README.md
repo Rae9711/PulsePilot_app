@@ -166,6 +166,14 @@ Each entry includes:
 - [ ] 5+ edge case scenarios documented
 - [ ] All teams reference this for test data and validation
 
+## Current Alignment Checks
+
+Use scenario validation to explicitly cover these latest product behaviors:
+
+- Settings-driven persistence: users stay signed in unless they log out
+- Bilingual behavior: scenario outputs remain coherent in both English and Chinese
+- Demo readiness: seeded persona timelines include enough weight logs for immediate chart rendering
+
 ## File Structure
 
 ```

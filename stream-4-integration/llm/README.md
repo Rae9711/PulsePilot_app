@@ -9,6 +9,8 @@ This folder now supports two complementary paths:
 
 The Jac service is an optional microservice that rewrites already-deterministic PulsePilot insights into cleaner end-user copy. It does not decide whether an insight should exist. The backend remains the source of truth for baselines, rule firing, and supporting statistics.
 
+The production app currently supports bilingual UX (English/Chinese). When integrating this service, keep rewritten copy consistent with the request language selected in the client.
+
 That split is intentional:
 - deterministic backend rules keep insights explainable
 - Jac byLLM improves wording and presentation
@@ -28,6 +30,13 @@ If `INSIGHTS_LLM_PROVIDER=off`, the backend uses only deterministic copy.
 If `INSIGHTS_LLM_PROVIDER=openai`, the backend talks directly to an OpenAI-compatible API.
 If `INSIGHTS_LLM_PROVIDER=ollama`, the backend talks directly to Ollama.
 If `INSIGHTS_LLM_PROVIDER=jac`, the backend calls this Jac service.
+
+Recommended language header passthrough from backend to this service:
+
+```bash
+x-app-language: en | zh
+Accept-Language: en-US,en;q=0.9 or zh-CN,zh;q=0.9
+```
 
 ## Jac Service Setup
 

@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
 
-PulsePilot is a personalized fitness tracking application that helps users discover **their own patterns**—not through generic advice, but through data-driven insights derived from their unique baseline. Log workouts and meals in natural language, capture how you felt before and after, and receive explainable insights tied to your personal trends.
+PulsePilot is a personalized fitness tracking application that helps users discover **their own patterns**—not through generic advice, but through data-driven insights derived from their unique baseline. Log workouts and meals in natural language, capture how you felt before and after, track weight trends, and receive explainable insights tied to your personal trends.
 
 ---
 
@@ -25,7 +25,7 @@ cd stream-1-backend
 npm install
 cp .env.example .env  # Configure DATABASE_URL and JWT_SECRET
 npx prisma migrate dev
-npm run seed  # Creates 3 demo users with 95+ entries each
+npm run seed  # Creates 3 demo users with 95+ entries each + historical weight logs
 npm run dev  # Starts on http://localhost:3000
 
 # 2. Frontend Setup (in a new terminal)
@@ -53,8 +53,14 @@ npm run dev  # Starts on http://localhost:5174
 - **🔐 Authentication System**
     - JWT-based authentication with secure password hashing
     - Sign up, login, logout, and session management
-    - Protected routes and automatic token refresh
+    - Keep-signed-in preference in Settings (persistent vs session login)
     - User data isolation
+
+- **🌐 Bilingual Experience (EN / 中文)**
+    - In-app language switch from Settings
+    - Frontend UI localization across core routes and components
+    - Backend language-aware responses for coach and analytics endpoints
+    - Chinese mode includes localized insights, summaries, and recommendations
 
 - **📝 Natural Language Logging**
     - Log workouts and meals in plain text
@@ -76,12 +82,14 @@ npm run dev  # Starts on http://localhost:5174
 - **📈 Trend Visualization**
     - Interactive charts showing progress over time
     - Energy, stress, and mood trends
+    - Weight history charts with recent log table
     - Compare baselines to recent activity
     - Identify what's working (and what's not)
 
 - **👤 Demo Personas**
     - 3 distinct user types with realistic 6-month history
     - 95+ entries per user (285 total)
+    - Persona-specific weight trajectories seeded for chart-ready demos
     - Showcases different patterns and AI adaptations
     - Perfect for testing and demonstrations
 
@@ -120,8 +128,9 @@ PulsePilot_app/
 │   ├── src/
 │   │   ├── components/       # Reusable UI components
 │   │   ├── pages/            # Route pages (Login, Dashboard, Trends, etc.)
-│   │   ├── context/          # State management (AuthContext)
+│   │   ├── context/          # State management (Auth + Language contexts)
 │   │   ├── api/              # API client and mocks
+│   │   ├── utils/            # Preferences (session + language persistence)
 │   │   └── types/            # TypeScript type definitions
 │   └── public/               # Static assets
 │
@@ -277,6 +286,12 @@ Every insight is **personal to the user**:
 - Insights surface *deviations from your baseline*, not population norms
 - Rules are explainable: "Your energy is +1.2 higher after morning runs vs. your average"
 - Users see *trends relative to themselves*, enabling self-discovery
+
+### Practical UX Defaults
+
+- Users can stay signed in until logout via Settings
+- Users can switch between English and Chinese at any time
+- Demo accounts include enough historical data (including weight logs) for immediate chart rendering
 
 ### What We Track
 
