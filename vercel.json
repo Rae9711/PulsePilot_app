@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
-  "installCommand": "npm --prefix stream-2-frontend ci",
-  "buildCommand": "npm --prefix stream-2-frontend run build",
+  "installCommand": "cd stream-2-frontend && npm ci",
+  "buildCommand": "cd stream-2-frontend && npm run build",
   "outputDirectory": "stream-2-frontend/dist",
   "rewrites": [
     {
