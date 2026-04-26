@@ -1,0 +1,123 @@
+[
+  {
+    "id": "sample-run-001",
+    "persona_id": "jordan",
+    "type": "workout",
+    "raw_text": "30 min easy run around the park",
+    "occurred_at": "2026-02-10T07:00:00Z",
+    "expected_parse": {
+      "activity_type": "run",
+      "duration_min": 30,
+      "intensity": "low",
+      "meal_type": null,
+      "food_tags": []
+    },
+    "expected_feelings": {
+      "pre": { "valence": 3, "energy": 2, "stress": 3 },
+      "post": { "valence": 4, "energy": 3, "stress": 2 }
+    },
+    "expected_metrics_affected": ["post_strength_energy"],
+    "expected_insights": []
+  },
+  {
+    "id": "sample-strength-001",
+    "persona_id": "jordan",
+    "type": "workout",
+    "raw_text": "60 min strength training - bench 3x5, squats 5x5, deadlifts 3x3",
+    "occurred_at": "2026-02-10T06:30:00Z",
+    "expected_parse": {
+      "activity_type": "strength",
+      "duration_min": 60,
+      "intensity": "high",
+      "meal_type": null,
+      "food_tags": []
+    },
+    "expected_feelings": {
+      "pre": { "valence": 3, "energy": 2, "stress": 2 },
+      "post": { "valence": 5, "energy": 4, "stress": 1 }
+    },
+    "expected_metrics_affected": ["post_strength_energy"],
+    "expected_insights": ["energy_uplift_strength"]
+  },
+  {
+    "id": "sample-meal-001",
+    "persona_id": "jordan",
+    "type": "meal",
+    "raw_text": "grilled chicken breast, brown rice, steamed broccoli",
+    "occurred_at": "2026-02-10T12:30:00Z",
+    "expected_parse": {
+      "activity_type": null,
+      "duration_min": null,
+      "intensity": null,
+      "meal_type": "lunch",
+      "food_tags": ["protein", "carbs", "vegetables"]
+    },
+    "expected_feelings": {
+      "pre": { "valence": 3, "energy": 3, "stress": 3 },
+      "post": { "valence": 4, "energy": 4, "stress": 2 }
+    },
+    "expected_metrics_affected": ["meal_quality"],
+    "expected_insights": []
+  },
+  {
+    "id": "sample-late-dinner-001",
+    "persona_id": "alex",
+    "type": "meal",
+    "raw_text": "late dinner at 9:45pm - burger and fries",
+    "occurred_at": "2026-02-11T21:45:00Z",
+    "expected_parse": {
+      "activity_type": null,
+      "duration_min": null,
+      "intensity": null,
+      "meal_type": "dinner",
+      "food_tags": ["protein", "carbs", "fried"]
+    },
+    "expected_feelings": {
+      "pre": null,
+      "post": { "valence": 3, "energy": 3, "stress": 3 }
+    },
+    "expected_metrics_affected": ["late_meal_post_energy"],
+    "expected_insights": []
+  },
+  {
+    "id": "sample-next-morning-after-late-dinner-001",
+    "persona_id": "alex",
+    "type": "workout",
+    "raw_text": "easy 20 min morning walk, feeling a bit sluggish",
+    "occurred_at": "2026-02-12T07:30:00Z",
+    "expected_parse": {
+      "activity_type": "walk",
+      "duration_min": 20,
+      "intensity": "low",
+      "meal_type": null,
+      "food_tags": []
+    },
+    "expected_feelings": {
+      "pre": { "valence": 3, "energy": 2, "stress": 3 },
+      "post": { "valence": 3, "energy": 3, "stress": 2 }
+    },
+    "expected_metrics_affected": ["late_meal_post_energy"],
+    "expected_insights": ["late_meals_lower_morning_energy"]
+  },
+  {
+    "id": "sample-sparse-001",
+    "persona_id": "sam",
+    "type": "workout",
+    "raw_text": "15 min walk after dinner",
+    "occurred_at": "2026-02-01T19:30:00Z",
+    "expected_parse": {
+      "activity_type": "walk",
+      "duration_min": 15,
+      "intensity": "low",
+      "meal_type": null,
+      "food_tags": []
+    },
+    "expected_feelings": {
+      "pre": null,
+      "post": { "valence": 3, "energy": 3, "stress": 3 }
+    },
+    "expected_metrics_affected": [],
+    "expected_insights": []
+  }
+]
+

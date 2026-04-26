@@ -1,0 +1,10 @@
+[
+  {
+    "user_id": "00000000-0000-0000-0000-000000000001",
+    "entries": [
+      {"id": "e1", "type": "workout", "occurred_at": "2026-02-20T08:00:00Z", "post_energy": 4},
+      {"id": "e2", "type": "workout", "occurred_at": "2026-02-22T08:00:00Z", "post_energy": 5},
+      {"id": "e3", "type": "meal", "occurred_at": "2026-02-22T21:30:00Z", "post_energy": 2}
+    ]
+  }
+]

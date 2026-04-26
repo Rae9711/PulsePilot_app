@@ -1,0 +1,24 @@
+{
+  "id": "sam",
+  "name": "Sam",
+  "age": 42,
+  "profile": "Returning to fitness after several years away, new to structured logging.",
+  "goals": [
+    "Build a sustainable workout and meal logging habit",
+    "Get early, easy-to-understand insights without overwhelming detail",
+    "Track how consistency changes energy and mood over time"
+  ],
+  "logging_pattern": {
+    "summary": "Starts with very sparse logs, then increases frequency and detail over time.",
+    "workouts_per_week_initial": 1,
+    "workouts_per_week_later": 3,
+    "meals_logged_per_day_initial": 0.5,
+    "meals_logged_per_day_later": 2,
+    "timeline": [
+      "Days 1–10: 1–2 simple entries/day, few feelings recorded",
+      "Days 11–20: 3–4 entries/day with feelings before and after",
+      "Days 21+: Consistent detailed logging across workouts and meals"
+    ]
+  }
+}
+

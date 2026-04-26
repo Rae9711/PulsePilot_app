@@ -1,0 +1,183 @@
+/// Prisma schema for FitForecast backend
+///
+/// This file defines the database models, enums, and indexes used by the
+/// stream-1-backend. It is the single source of truth for the schema that
+/// Prisma Client generates TypeScript types from. When the schema changes,
+/// run `npx prisma migrate dev` (development) or the appropriate migration
+/// workflow to update the database and the generated client.
+///
+/// High-level notes:
+/// - `User` owns `LogEntry` rows; `LogEntry` may have optional NLP-enriched
+///   `ParsedEntry` data and multiple `FeelingEntry` rows (pre/post snapshots).
+/// - `BaselineMetric` stores rolling aggregated metrics per user/scope/window
+///   (e.g., 7/30/365-day averages) that the insights engine consumes.
+/// - `Insight` rows represent surfaced recommendations derived deterministically
+///   from baseline deltas and rules.
+///
+/// Keep comments here to help developers understand table relationships and
+/// the intent behind indexes / uniqueness constraints.
+generator client {
+  provider = "prisma-client-js"
+}
+
+/// Configure the Postgres datasource and pull connection details from the environment.
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Enumerations codify our domain-specific option lists so inputs remain type-safe.
+enum LogEntryType {
+  workout
+  meal
+}
+
+enum FeelingWhen {
+  pre
+  post
+}
+
+enum ActivityIntensity {
+  low
+  medium
+  high
+}
+
+enum MealType {
+  breakfast
+  lunch
+  dinner
+  snack
+}
+
+enum BaselineScope {
+  workout
+  meal
+  mood
+}
+
+enum GoalMetric {
+  weekly_workouts
+  active_days
+  post_workout_energy
+  post_workout_stress
+  recovery_quality
+}
+
+enum GoalDirection {
+  at_least
+  at_most
+}
+
+enum GoalStatus {
+  active
+  completed
+  archived
+}
+
+/// Users represent FitForecast accounts and own the downstream records.
+model User {
+  id              String           @id @default(uuid())
+  email           String           @unique
+  password        String           // hashed password
+  name            String?          // optional display name
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  entries         LogEntry[]
+  baselineMetrics BaselineMetric[]
+  insights        Insight[]
+  goals           Goal[]
+}
+
+/// LogEntry stores the raw text and metadata submitted by the user.
+model LogEntry {
+  id          String         @id @default(uuid())
+  userId      String
+  user        User           @relation(fields: [userId], references: [id])
+  type        LogEntryType
+  rawText     String
+  occurredAt  DateTime
+  createdAt   DateTime       @default(now())
+  feelings    FeelingEntry[]
+  parsedEntry ParsedEntry?
+
+  @@index([userId, occurredAt])
+}
+
+/// FeelingEntry captures pre/post mood check-ins tied to a log entry.
+model FeelingEntry {
+  id         String      @id @default(uuid())
+  logEntryId String
+  logEntry   LogEntry    @relation(fields: [logEntryId], references: [id])
+  when       FeelingWhen
+  valence    Int
+  energy     Int
+  stress     Int
+  notes      String?
+  createdAt  DateTime    @default(now())
+
+  @@index([logEntryId])
+}
+
+/// ParsedEntry holds optional NLP enrichment derived from the raw text.
+model ParsedEntry {
+  id            String             @id @default(uuid())
+  logEntryId    String             @unique
+  logEntry      LogEntry           @relation(fields: [logEntryId], references: [id])
+  activityType  String?
+  durationMin   Int?
+  intensity     ActivityIntensity?
+  mealType      MealType?
+  foodTags      String[]           @default([])
+  createdAt     DateTime           @default(now())
+}
+
+/// BaselineMetric stores rolling aggregates the insights engine consumes.
+model BaselineMetric {
+  id          String        @id @default(uuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  scope       BaselineScope
+  metric      String
+  value       Float
+  windowDays  Int
+  dataPoints  Int
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([userId, scope, windowDays])
+  @@unique([userId, scope, metric, windowDays], name: "user_scope_metric_window")
+}
+
+/// Insight rows represent surfaced recommendations backed by rule metadata.
+model Insight {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  type            String
+  summary         String
+  supportingStats Json
+  ruleName        String
+  createdAt       DateTime @default(now())
+  isActive        Boolean  @default(true)
+
+  @@index([userId, isActive])
+  @@unique([userId, type, ruleName], name: "userId_type_ruleName")
+}
+
+model Goal {
+  id          String        @id @default(uuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  title       String
+  metric      GoalMetric
+  direction   GoalDirection
+  targetValue Float
+  windowDays  Int
+  note        String?
+  status      GoalStatus    @default(active)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([userId, status])
+}

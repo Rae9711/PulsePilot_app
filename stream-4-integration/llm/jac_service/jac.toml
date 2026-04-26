@@ -1,0 +1,15 @@
+[project]
+name = "fitforecast-jac-llm"
+version = "0.1.0"
+description = "Optional Jac byLLM service for FitForecast insight narrative rewriting"
+entry = "rewrite_insight.jac"
+
+[plugins.byllm.model]
+default_model = "gpt-4o-mini"
+
+[plugins.byllm.call_params]
+temperature = 0.2
+max_tokens = 220
+
+[plugins.byllm]
+system_prompt = "You rewrite FitForecast insight copy into concise, evidence-based user language. Never invent evidence, numbers, or causal claims beyond the provided fields."

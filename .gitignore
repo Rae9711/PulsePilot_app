@@ -1,0 +1,9 @@
+.DS_Store
+.venv/
+__pycache__/
+
+**/node_modules/
+**/.vite/
+**/dist/
+
+stream-2-frontend/.env

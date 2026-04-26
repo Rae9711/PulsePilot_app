@@ -1,0 +1,23 @@
+{
+  "id": "alex",
+  "name": "Alex",
+  "age": 35,
+  "profile": "Fitness and nutrition conscious, recently adopted a stricter routine.",
+  "goals": [
+    "See how late dinners impact sleep and next-morning energy",
+    "Maintain consistent breakfast habits",
+    "Balance cardio/yoga with recovery"
+  ],
+  "logging_pattern": {
+    "summary": "Logs most meals and a daily workout, dinner time varies a lot.",
+    "workouts_per_week": 5,
+    "meals_logged_per_day": 3,
+    "typical_entries": [
+      "Eggs, toast, coffee for breakfast",
+      "Salad or leftovers for lunch",
+      "30 min run or 45 min yoga after work",
+      "Occasional late dinners after 9pm with varied quality"
+    ]
+  }
+}
+

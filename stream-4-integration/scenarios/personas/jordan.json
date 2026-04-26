@@ -1,0 +1,22 @@
+{
+  "id": "jordan",
+  "name": "Jordan",
+  "age": 28,
+  "profile": "Active gym-goer and strength training enthusiast, works out 4–5 days per week.",
+  "goals": [
+    "Understand energy recovery after strength workouts",
+    "Maintain consistent strength training frequency",
+    "See how nutrition affects post-workout energy"
+  ],
+  "logging_pattern": {
+    "summary": "Morning strength workouts, midday nutritious meals, occasional evening walks.",
+    "workouts_per_week": 4,
+    "meals_logged_per_day": 2,
+    "typical_entries": [
+      "60–90 min strength session with pre/post feelings",
+      "Grilled chicken, brown rice, broccoli at lunch",
+      "20–30 min easy walk on some evenings"
+    ]
+  }
+}
+

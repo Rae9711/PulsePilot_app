@@ -1,0 +1,66 @@
+version: '3.9'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: fitforecast-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: fitforecast
+      POSTGRES_USER: fitforecast
+      POSTGRES_PASSWORD: fitforecast
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fitforecast"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API
+  backend:
+    build:
+      context: ./stream-1-backend
+      dockerfile: Dockerfile
+    container_name: fitforecast-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://fitforecast:fitforecast@postgres:5432/fitforecast?schema=public
+      PORT: 3000
+      NODE_ENV: production
+      DEFAULT_USER_ID: 00000000-0000-0000-0000-000000000001
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./stream-1-backend:/app
+      - /app/node_modules
+    command: sh -c "npm run prisma:generate && npm run prisma:migrate && npm run seed && npm start"
+
+  # Frontend
+  frontend:
+    build:
+      context: ./stream-2-frontend
+      dockerfile: Dockerfile
+    container_name: fitforecast-frontend
+    restart: unless-stopped
+    environment:
+      VITE_API_BASE_URL: http://localhost:3000
+      VITE_DEFAULT_USER_ID: 00000000-0000-0000-0000-000000000001
+      VITE_ENABLE_MOCK_DATA: "false"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    volumes:
+      - ./stream-2-frontend:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
+    driver: local
