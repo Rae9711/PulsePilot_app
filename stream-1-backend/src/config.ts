@@ -1,6 +1,6 @@
-const DEFAULT_DEV_JWT_SECRET = 'fitforecast-dev-secret-change-in-production';
-const DEFAULT_JWT_ISSUER = 'fitforecast';
-const DEFAULT_JWT_AUDIENCE = 'fitforecast-web';
+const DEFAULT_DEV_JWT_SECRET = 'pulsepilot-dev-secret-change-in-production';
+const DEFAULT_JWT_ISSUER = 'pulsepilot';
+const DEFAULT_JWT_AUDIENCE = 'pulsepilot-web';
 
 export const isProduction = process.env.NODE_ENV === 'production';
 

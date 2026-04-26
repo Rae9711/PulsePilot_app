@@ -1,6 +1,6 @@
 #!/bin/bash
-# FitForecast MVP - Stop Script
-# This script stops all running FitForecast services
+# PulsePilot MVP - Stop Script
+# This script stops all running PulsePilot services
 
 # Colors for output
 RED='\033[0;31m'
@@ -22,7 +22,7 @@ print_warning() {
 }
 
 echo -e "\n${BLUE}════════════════════════════════${NC}"
-echo -e "${BLUE}  Stopping FitForecast MVP${NC}"
+echo -e "${BLUE}  Stopping PulsePilot MVP${NC}"
 echo -e "${BLUE}════════════════════════════════${NC}\n"
 
 # Check if Docker Compose services are running
@@ -73,7 +73,7 @@ if lsof -ti:5173 >/dev/null 2>&1; then
 fi
 
 echo ""
-print_success "All FitForecast services stopped"
+print_success "All PulsePilot services stopped"
 echo ""
 print_info "To start again: ./start-mvp.sh"
 echo ""

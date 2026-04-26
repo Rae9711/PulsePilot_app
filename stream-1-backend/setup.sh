@@ -1,10 +1,10 @@
 #!/bin/bash
-# FitForecast Backend Setup Script
+# PulsePilot Backend Setup Script
 # This script sets up the backend environment and database
 
 set -e
 
-echo "🚀 FitForecast Backend Setup"
+echo "🚀 PulsePilot Backend Setup"
 echo "============================"
 
 # Check if .env exists

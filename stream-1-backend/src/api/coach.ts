@@ -207,12 +207,12 @@ const chatSchema = z.object({
 const buildSystemPrompt = (plan: any, profile: any, mode: 'stabilize' | 'build' | 'optimize' | undefined, isZh: boolean): string => {
   const lines = isZh
     ? [
-        '你是 FitForecast 的 AI 健身与营养教练。请简洁、鼓励且基于证据地回答。',
+        '你是 PulsePilot 的 AI 健身与营养教练。请简洁、鼓励且基于证据地回答。',
         '只能基于用户真实数据给建议，不要编造诊断。',
         '默认使用简体中文回答。',
       ]
     : [
-        'You are an AI fitness and nutrition coach for FitForecast. Be concise, encouraging, and evidence-based.',
+        'You are an AI fitness and nutrition coach for PulsePilot. Be concise, encouraging, and evidence-based.',
         'Only give advice grounded in the user\'s actual stats. Do not invent diagnoses.',
       ];
   if (mode) {

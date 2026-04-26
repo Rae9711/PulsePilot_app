@@ -1,7 +1,7 @@
-# FitForecast Authentication System
+# PulsePilot Authentication System
 
 ## Overview
-FitForecast now includes a complete JWT-based authentication system that allows each user to create their own account and maintain their own isolated data.
+PulsePilot now includes a complete JWT-based authentication system that allows each user to create their own account and maintain their own isolated data.
 
 ## ✅ What's Been Implemented
 

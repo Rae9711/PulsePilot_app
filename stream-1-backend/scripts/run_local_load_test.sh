@@ -12,12 +12,12 @@ command -v docker >/dev/null 2>&1 || { echo "docker is required but not installe
 # Suppress Homebrew environment hints in output when starting services
 export HOMEBREW_NO_ENV_HINTS=1
 
-CONTAINER_NAME=fitforecast-postgres
+CONTAINER_NAME=pulsepilot-postgres
 POSTGRES_VERSION=15
 
 if [ "$(docker ps -aq -f name=$CONTAINER_NAME)" = "" ]; then
   echo "Creating Postgres container $CONTAINER_NAME..."
-  docker run --name $CONTAINER_NAME -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=fitforecast -p 5432:5432 -d postgres:$POSTGRES_VERSION
+  docker run --name $CONTAINER_NAME -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=pulsepilot -p 5432:5432 -d postgres:$POSTGRES_VERSION
 else
   if [ "$(docker ps -q -f name=$CONTAINER_NAME)" = "" ]; then
     echo "Starting existing Postgres container $CONTAINER_NAME..."
@@ -28,12 +28,12 @@ else
 fi
 
 echo "Waiting for Postgres to become available..."
-until docker exec $CONTAINER_NAME pg_isready -U postgres -d fitforecast >/dev/null 2>&1; do
+until docker exec $CONTAINER_NAME pg_isready -U postgres -d pulsepilot >/dev/null 2>&1; do
   sleep 1
 done
 echo "Postgres is ready"
 
-export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/fitforecast"
+export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/pulsepilot"
 export SEED_ENTRY_COUNT=${SEED_ENTRY_COUNT:-50}
 export SEED_SPAN_DAYS=${SEED_SPAN_DAYS:-180}
 

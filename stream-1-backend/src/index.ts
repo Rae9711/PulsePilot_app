@@ -1,4 +1,4 @@
-// Entry point that wires middleware, routes, and server lifecycle for the FitForecast backend.
+// Entry point that wires middleware, routes, and server lifecycle for the PulsePilot backend.
 // HTTP middleware and framework imports wire up the core server plumbing.
 import cors from 'cors';
 import express from 'express';
@@ -105,7 +105,7 @@ const port = Number(process.env.PORT) || 3000;
 // Keep integration tests from opening sockets while still running the server in other envs.
 if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => {
-    logger.info(`FitForecast backend listening on port ${port}`);
+    logger.info(`PulsePilot backend listening on port ${port}`);
   });
 }
 

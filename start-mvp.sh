@@ -1,5 +1,5 @@
 #!/bin/bash
-# FitForecast MVP - Master Startup Script
+# PulsePilot MVP - Master Startup Script
 # This script sets up and starts the complete integrated MVP
 
 set -e
@@ -83,7 +83,7 @@ echo -e "${NC}\n"
 # Parse command line arguments
 MODE=${1:-local}  # local, docker, or setup-only
 
-print_header "FitForecast MVP Startup"
+print_header "PulsePilot MVP Startup"
 
 # Check prerequisites
 print_info "Checking prerequisites..."
@@ -337,7 +337,7 @@ fi
 
 # Help
 if [ "$MODE" = "help" ] || [ "$MODE" = "--help" ] || [ "$MODE" = "-h" ]; then
-    echo "FitForecast MVP Startup Script"
+    echo "PulsePilot MVP Startup Script"
     echo ""
     echo "Usage: ./start-mvp.sh [MODE]"
     echo ""

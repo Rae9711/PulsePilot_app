@@ -295,7 +295,7 @@ The enhanced seed script required a database reset to:
 3. ✅ 3 distinct personas with realistic patterns
 4. ✅ Clear differentiation for AI insight testing
 
-**Result**: FitForecast now demonstrates:
+**Result**: PulsePilot now demonstrates:
 - How consistency leads to improvement (Athena)
 - How stress and inconsistency block progress (Boris)
 - How optimization maintains peak performance (Cora)

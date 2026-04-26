@@ -68,7 +68,7 @@ export const metricsHandler = (req: Request, res: Response) => {
   }
 
   res.json({
-    service: 'fitforecast-backend',
+    service: 'pulsepilot-backend',
     uptimeSeconds: Math.round((Date.now() - startedAt) / 1000),
     requests: {
       total: totalRequests,

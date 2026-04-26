@@ -43,7 +43,7 @@ def add_header_bar(slide, text):
 
 def add_bullets(title, bullets):
     s = prs.slides.add_slide(prs.slide_layouts[1])
-    add_header_bar(s, "FitForecast - Final Presentation")
+    add_header_bar(s, "PulsePilot - Final Presentation")
     s.shapes.title.text = title
     s.shapes.title.left = Inches(0.6)
     s.shapes.title.top = Inches(0.9)
@@ -81,8 +81,8 @@ def add_bullets(title, bullets):
 
 # Slide 1
 slide = prs.slides.add_slide(prs.slide_layouts[0])
-add_header_bar(slide, "FitForecast - Final Presentation")
-slide.shapes.title.text = "FitForecast"
+add_header_bar(slide, "PulsePilot - Final Presentation")
+slide.shapes.title.text = "PulsePilot"
 slide.placeholders[1].text = "Discovering personal fitness patterns through explainable insights"
 style_title(slide.shapes.title, slide.placeholders[1])
 
@@ -96,7 +96,7 @@ add_bullets("The Problem (Relatable)", [
 
 # Slide 3
 add_bullets("Our Solution", [
-    "FitForecast is a personalization-first fitness pattern analyzer.",
+    "PulsePilot is a personalization-first fitness pattern analyzer.",
     "Users log workouts/meals in natural language plus pre/post feelings (mood, energy, stress).",
     "System learns each user's baseline and surfaces explainable insights.",
     "Predictions compare scenarios so users can test timing, fueling, and routine changes.",
@@ -190,10 +190,10 @@ add_bullets("Submission Requirement: Video Checklist", [
 
 # Slide 12
 add_bullets("Thank You", [
-    "FitForecast helps users discover what works for their body and routine.",
+    "PulsePilot helps users discover what works for their body and routine.",
     "Questions?",
 ])
 
-OUTPUT = "FitForecast_Final_Presentation.pptx"
+OUTPUT = "PulsePilot_Final_Presentation.pptx"
 prs.save(OUTPUT)
 print(OUTPUT)

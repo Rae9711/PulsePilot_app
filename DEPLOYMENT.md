@@ -1,6 +1,6 @@
-# FitForecast MVP Deployment Guide
+# PulsePilot MVP Deployment Guide
 
-This guide provides step-by-step instructions for deploying and running the FitForecast MVP, integrating all four streams.
+This guide provides step-by-step instructions for deploying and running the PulsePilot MVP, integrating all four streams.
 
 ## Table of Contents
 
@@ -73,7 +73,7 @@ The frontend will now be running at `http://localhost:5174`
 
 ### 4. Access the Application
 
-Open your browser to `http://localhost:5174` and you should see the FitForecast dashboard!
+Open your browser to `http://localhost:5174` and you should see the PulsePilot dashboard!
 
 **Default User:**
 - User ID: `00000000-0000-0000-0000-000000000001` (configured in .env)
@@ -131,7 +131,7 @@ For deployment to a cloud provider or VPS:
 
 2. **Configure environment variables:**
 ```bash
-DATABASE_URL=postgresql://user:password@host:5432/fitforecast
+DATABASE_URL=postgresql://user:password@host:5432/pulsepilot
 PORT=3000
 NODE_ENV=production
 DEFAULT_USER_ID=your-user-id
@@ -220,7 +220,7 @@ npm run build
 5. Add a SPA rewrite so direct requests to client routes resolve to `index.html`
 6. **Environment Variables:** Add `VITE_API_BASE_URL`, etc.
 
-If you deploy this React app on Vercel without a rewrite, requests to routes like `/login`, `/history`, or `/analytics` will return Vercel `NOT_FOUND` because those paths only exist in the client router. Keep the frontend [stream-2-frontend/vercel.json](/Users/rae/FitForcast_app/stream-2-frontend/vercel.json) file in the deployed root with:
+If you deploy this React app on Vercel without a rewrite, requests to routes like `/login`, `/history`, or `/analytics` will return Vercel `NOT_FOUND` because those paths only exist in the client router. Keep the frontend [stream-2-frontend/vercel.json](/Users/rae/PulsePilot_app/stream-2-frontend/vercel.json) file in the deployed root with:
 
 ```json
 {
@@ -233,7 +233,7 @@ If you deploy this React app on Vercel without a rewrite, requests to routes lik
 }
 ```
 
-If the Vercel log finishes in a fraction of a second and never shows dependency installation or `npm run build`, the project is likely deploying the repository root instead of `stream-2-frontend`. The root [vercel.json](/Users/rae/FitForcast_app/vercel.json) file provides a fallback for repo-root deployments by running the frontend build from `stream-2-frontend` and publishing `stream-2-frontend/dist`.
+If the Vercel log finishes in a fraction of a second and never shows dependency installation or `npm run build`, the project is likely deploying the repository root instead of `stream-2-frontend`. The root [vercel.json](/Users/rae/PulsePilot_app/vercel.json) file provides a fallback for repo-root deployments by running the frontend build from `stream-2-frontend` and publishing `stream-2-frontend/dist`.
 
 ### Environment Variables Summary
 
@@ -248,7 +248,7 @@ LOG_LEVEL=info
 
 #### Frontend (.env)
 ```bash
-VITE_API_BASE_URL=https://api.fitforecast.com
+VITE_API_BASE_URL=https://api.pulsepilot.com
 VITE_DEFAULT_USER_ID=00000000-0000-0000-0000-000000000001
 VITE_ENABLE_MOCK_DATA=false
 ```
@@ -316,7 +316,7 @@ docker-compose -f docker-compose.dev.yml ps
 cat stream-1-backend/.env
 
 # Test connection
-docker-compose -f docker-compose.dev.yml exec postgres psql -U fitforecast -d fitforecast -c "SELECT 1"
+docker-compose -f docker-compose.dev.yml exec postgres psql -U pulsepilot -d pulsepilot -c "SELECT 1"
 ```
 
 **"Prisma Client not generated"**
@@ -422,4 +422,4 @@ For issues or questions:
 
 ---
 
-**🎉 Congratulations! Your FitForecast MVP is now integrated and running!**
+**🎉 Congratulations! Your PulsePilot MVP is now integrated and running!**

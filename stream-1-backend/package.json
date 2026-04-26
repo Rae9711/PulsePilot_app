@@ -1,8 +1,8 @@
 {
-  "name": "fitforecast-backend",
+  "name": "pulsepilot-backend",
   "version": "0.1.0",
   "private": true,
-  "description": "Stream 1 backend service for FitForecast",
+  "description": "Stream 1 backend service for PulsePilot",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "perf:run": "sh scripts/run_perf_local.sh",

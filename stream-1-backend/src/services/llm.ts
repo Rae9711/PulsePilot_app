@@ -32,7 +32,7 @@ const buildMessages = (narrative: InsightNarrative, stats: Record<string, unknow
   {
     role: 'user',
     content: JSON.stringify({
-      task: 'Rewrite the following FitForecast insight without inventing any new evidence.',
+      task: 'Rewrite the following PulsePilot insight without inventing any new evidence.',
       output_schema: {
         title: 'string',
         summary: 'string',
@@ -55,7 +55,7 @@ const buildForecastMessages = (narrative: ForecastNarrative, stats: Record<strin
   {
     role: 'user',
     content: JSON.stringify({
-      task: 'Rewrite the following FitForecast forecast summary into clearer coaching copy without changing the evidence or confidence.',
+      task: 'Rewrite the following PulsePilot forecast summary into clearer coaching copy without changing the evidence or confidence.',
       output_schema: {
         headline: 'string',
         coachSummary: 'string',

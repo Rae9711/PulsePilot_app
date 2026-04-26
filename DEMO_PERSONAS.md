@@ -1,7 +1,7 @@
 # 👥 Demo User Personas - Detailed Profiles
 
 ## Overview
-The FitForecast demo includes 3 distinct user personas with **95+ entries each** spanning 6 months of realistic activity. Each persona demonstrates different patterns, challenges, and opportunities for AI-powered insights.
+The PulsePilot demo includes 3 distinct user personas with **95+ entries each** spanning 6 months of realistic activity. Each persona demonstrates different patterns, challenges, and opportunities for AI-powered insights.
 
 ---
 
@@ -228,7 +228,7 @@ The FitForecast demo includes 3 distinct user personas with **95+ entries each**
 These are the three demos to run in sequence for stakeholders. Each one shows full product value, not just static charts.
 
 ### Demo 1: Athena (Habit reinforcement and confidence)
-**Message**: "FitForecast rewards consistency with precise reinforcement and small optimization ideas."
+**Message**: "PulsePilot rewards consistency with precise reinforcement and small optimization ideas."
 
 1. Login as Athena and open Dashboard.
 2. Highlight stable daily targets and positive momentum.
@@ -248,7 +248,7 @@ These are the three demos to run in sequence for stakeholders. Each one shows fu
 - Fast closed loop: log -> advice -> validate on trends
 
 ### Demo 2: Boris (Risk detection and intervention)
-**Message**: "FitForecast catches burnout patterns early and gives actionable recovery guidance."
+**Message**: "PulsePilot catches burnout patterns early and gives actionable recovery guidance."
 
 1. Login as Boris and open Dashboard.
 2. Call out high-stress and inconsistency context.
@@ -269,7 +269,7 @@ These are the three demos to run in sequence for stakeholders. Each one shows fu
 - Transition from insight to next-day action
 
 ### Demo 3: Cora (Performance optimization and maintenance)
-**Message**: "FitForecast can optimize high performers without over-correcting what already works."
+**Message**: "PulsePilot can optimize high performers without over-correcting what already works."
 
 1. Login as Cora and open Dashboard.
 2. Show strong routine quality and stable profile.
@@ -294,7 +294,7 @@ These are the three demos to run in sequence for stakeholders. Each one shows fu
 
 ### Quick Start Guide
 
-1. **Open FitForecast**: http://localhost:5174/login
+1. **Open PulsePilot**: http://localhost:5174/login
 
 2. **Choose a Persona**:
    - Click demo button for desired user
@@ -387,7 +387,7 @@ Each persona represents a real-world user type:
 2. **Boris** = The Struggling User (show intervention opportunities)
 3. **Cora** = The Expert (show advanced features)
 
-Together, they demonstrate FitForecast's ability to adapt insights to different user profiles, fitness levels, and lifestyle patterns.
+Together, they demonstrate PulsePilot's ability to adapt insights to different user profiles, fitness levels, and lifestyle patterns.
 
 **All passwords**: `password123`  
 **Total data**: 285+ entries (95 per user)  

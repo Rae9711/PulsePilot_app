@@ -37,7 +37,7 @@ def build_forecast_payload(result: Any) -> dict[str, Any]:
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "FitForecastJac/0.1"
+    server_version = "PulsePilotJac/0.1"
 
     def _send(self, status: int, payload: dict[str, Any]) -> None:
         body = json.dumps(payload).encode("utf-8")
@@ -60,7 +60,7 @@ class Handler(BaseHTTPRequestHandler):
                 200,
                 {
                     "status": "ok",
-                    "service": "fitforecast-jac-llm",
+                    "service": "pulsepilot-jac-llm",
                     "jac_entry": "rewrite_insight.jac",
                 },
             )
@@ -136,5 +136,5 @@ if __name__ == "__main__":
     host = os.getenv("FITFORECAST_JAC_HOST", "127.0.0.1")
     port = int(os.getenv("FITFORECAST_JAC_PORT", "8787"))
     server = HTTPServer((host, port), Handler)
-    print(f"FitForecast Jac LLM service listening on http://{host}:{port}")
+    print(f"PulsePilot Jac LLM service listening on http://{host}:{port}")
     server.serve_forever()

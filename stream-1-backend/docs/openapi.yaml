@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: FitForecast Stream 1 Backend API
+  title: PulsePilot Stream 1 Backend API
   version: '0.1.0'
-  description: Minimal OpenAPI spec for the FitForecast backend (entries, feelings, trends, insights)
+  description: Minimal OpenAPI spec for the PulsePilot backend (entries, feelings, trends, insights)
 servers:
   - url: http://localhost:3000
 paths:

@@ -1,10 +1,10 @@
 #!/bin/bash
-# FitForecast Frontend Setup Script
+# PulsePilot Frontend Setup Script
 # This script sets up the frontend environment
 
 set -e
 
-echo "🎨 FitForecast Frontend Setup"
+echo "🎨 PulsePilot Frontend Setup"
 echo "============================="
 
 # Check if .env exists

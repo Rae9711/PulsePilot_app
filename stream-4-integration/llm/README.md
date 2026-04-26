@@ -7,7 +7,7 @@ This folder now supports two complementary paths:
 
 ## What the Jac Service Does
 
-The Jac service is an optional microservice that rewrites already-deterministic FitForecast insights into cleaner end-user copy. It does not decide whether an insight should exist. The backend remains the source of truth for baselines, rule firing, and supporting statistics.
+The Jac service is an optional microservice that rewrites already-deterministic PulsePilot insights into cleaner end-user copy. It does not decide whether an insight should exist. The backend remains the source of truth for baselines, rule firing, and supporting statistics.
 
 That split is intentional:
 - deterministic backend rules keep insights explainable

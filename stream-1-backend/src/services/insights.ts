@@ -304,7 +304,7 @@ export const evaluateInsightsForUser = async (userId: string) => {
       priority: 'high',
       title: 'Inconsistency is blocking your progress',
       summary:
-        'Your current logging pattern has large breaks between activity days, which makes it harder to build momentum and harder for FitForecast to detect a stable upward trend.',
+        'Your current logging pattern has large breaks between activity days, which makes it harder to build momentum and harder for PulsePilot to detect a stable upward trend.',
       bullets: [
         `Average gap between activity days is ${clamp(profile.averageGapDays || 4)} days`,
         `${percent(profile.consistencyRate30)} of the last 30 days include a logged activity`,

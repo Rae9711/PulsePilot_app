@@ -1,4 +1,4 @@
-# 🚀 FitForecast MVP - Quick Start Guide
+# 🚀 PulsePilot MVP - Quick Start Guide
 
 ## System Status: ✅ FULLY OPERATIONAL
 
@@ -99,7 +99,7 @@ Quick login credentials for testing (all use password: `password123`):
 
 ### Database
 - **Type**: PostgreSQL 14
-- **Name**: fitforecast
+- **Name**: pulsepilot
 - **Connection**: localhost:5432
 - **Tables**: 8 (User, LogEntry, ParsedEntry, FeelingEntry, BaselineMetric, Insight, ParsedMeal, ParsedWorkout)
 
@@ -273,7 +273,7 @@ npx prisma migrate reset  # Reset DB (destructive!)
 ## 📂 Project Structure
 
 ```
-FitForcast_app/
+PulsePilot_app/
 ├── stream-1-backend/          # Backend API
 │   ├── src/
 │   │   ├── api/              # Route handlers
@@ -336,7 +336,7 @@ FitForcast_app/
 1. Check PostgreSQL status: `brew services list`
 2. Start if needed: `brew services start postgresql@14`
 3. Verify connection string in stream-1-backend/.env
-4. Test connection: `psql postgresql://fitforecast:fitforecast@localhost:5432/fitforecast`
+4. Test connection: `psql postgresql://pulsepilot:pulsepilot@localhost:5432/pulsepilot`
 
 ### Authentication not working
 1. Clear localStorage: Open DevTools → Application → Local Storage → Clear
@@ -356,7 +356,7 @@ FitForcast_app/
 
 ### Backend (.env)
 ```env
-DATABASE_URL="postgresql://fitforecast:fitforecast@localhost:5432/fitforecast"
+DATABASE_URL="postgresql://pulsepilot:pulsepilot@localhost:5432/pulsepilot"
 JWT_SECRET="your-secret-key-change-in-production"
 JWT_EXPIRES_IN="7d"
 DEFAULT_USER_ID="00000000-0000-0000-0000-000000000001"
@@ -409,6 +409,6 @@ Your system is working correctly if:
 
 ---
 
-**Enjoy using FitForecast! 🏋️‍♀️📊**
+**Enjoy using PulsePilot! 🏋️‍♀️📊**
 
 For questions or issues, check the documentation in `/docs` or review the code comments.

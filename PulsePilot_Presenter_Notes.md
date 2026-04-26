@@ -1,8 +1,8 @@
-# FitForecast Final Presentation - Presenter Notes
+# PulsePilot Final Presentation - Presenter Notes
 
-## Slide 1 - FitForecast
+## Slide 1 - PulsePilot
 - Introduce project and team.
-- One-line pitch: FitForecast helps users discover personal fitness patterns through explainable insights.
+- One-line pitch: PulsePilot helps users discover personal fitness patterns through explainable insights.
 
 ## Slide 2 - The Problem (Relatable)
 - Generic advice does not work for everyone.
@@ -12,7 +12,7 @@
 ## Slide 3 - Our Solution
 - Users log workouts/meals in natural language.
 - Users add pre/post feelings for valence, energy, and stress.
-- FitForecast builds personal baselines and provides explainable insights and predictions.
+- PulsePilot builds personal baselines and provides explainable insights and predictions.
 
 ## Slide 4 - Why It Matters
 - Focuses on personal trends instead of population averages.

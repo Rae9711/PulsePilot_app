@@ -1,4 +1,4 @@
-/// Prisma schema for FitForecast backend
+/// Prisma schema for PulsePilot backend
 ///
 /// This file defines the database models, enums, and indexes used by the
 /// stream-1-backend. It is the single source of truth for the schema that
@@ -75,7 +75,7 @@ enum GoalStatus {
   archived
 }
 
-/// Users represent FitForecast accounts and own the downstream records.
+/// Users represent PulsePilot accounts and own the downstream records.
 model User {
   id              String           @id @default(uuid())
   email           String           @unique

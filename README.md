@@ -1,4 +1,4 @@
-# 🏋️ FitForecast
+# 🏋️ PulsePilot
 
 > **Personal Behavioral Pattern Analyzer** – Discover your unique fitness patterns through data-driven insights
 
@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
 
-FitForecast is a personalized fitness tracking application that helps users discover **their own patterns**—not through generic advice, but through data-driven insights derived from their unique baseline. Log workouts and meals in natural language, capture how you felt before and after, and receive explainable insights tied to your personal trends.
+PulsePilot is a personalized fitness tracking application that helps users discover **their own patterns**—not through generic advice, but through data-driven insights derived from their unique baseline. Log workouts and meals in natural language, capture how you felt before and after, and receive explainable insights tied to your personal trends.
 
 ---
 
@@ -104,7 +104,7 @@ npm run dev  # Starts on http://localhost:5174
 ## 🏗️ Project Structure
 
 ```
-FitForcast_app/
+PulsePilot_app/
 ├── stream-1-backend/          # Node.js/Express API + PostgreSQL
 │   ├── src/
 │   │   ├── api/              # REST endpoints (auth, entries, insights, trends)
@@ -214,7 +214,7 @@ npm install
 # Configure environment
 cp .env.example .env
 # Edit .env and set:
-# - DATABASE_URL="postgresql://user:password@localhost:5432/fitforecast"
+# - DATABASE_URL="postgresql://user:password@localhost:5432/pulsepilot"
 # - JWT_SECRET="your-secret-key-here"
 
 # Run database migrations
@@ -427,7 +427,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ### Known Bugs
 - No known critical bugs currently
-- See [GitHub Issues](https://github.com/Rae9711/FitForcast_app/issues) for minor issues
+- See [GitHub Issues](https://github.com/Rae9711/PulsePilot_app/issues) for minor issues
 
 
 ---
@@ -445,21 +445,21 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## 📞 Support & Contact
 
-- **Issues**: [GitHub Issues](https://github.com/Rae9711/FitForcast_app/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Rae9711/FitForcast_app/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Rae9711/PulsePilot_app/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Rae9711/PulsePilot_app/discussions)
 - **Email**: [Your contact email]
 
 ---
 
 ## 🌟 Star This Repo!
 
-If you find FitForecast useful, please consider giving it a ⭐ on GitHub!
+If you find PulsePilot useful, please consider giving it a ⭐ on GitHub!
 
 ---
 
 **Built with ❤️ for everyone on their fitness journey**
 
-![FitForecast Demo](https://via.placeholder.com/800x400?text=FitForecast+Demo+Screenshot)
+![PulsePilot Demo](https://via.placeholder.com/800x400?text=PulsePilot+Demo+Screenshot)
 
 ---
 

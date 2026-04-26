@@ -1,7 +1,7 @@
 [project]
-name = "fitforecast-jac-llm"
+name = "pulsepilot-jac-llm"
 version = "0.1.0"
-description = "Optional Jac byLLM service for FitForecast insight narrative rewriting"
+description = "Optional Jac byLLM service for PulsePilot insight narrative rewriting"
 entry = "rewrite_insight.jac"
 
 [plugins.byllm.model]
@@ -12,4 +12,4 @@ temperature = 0.2
 max_tokens = 220
 
 [plugins.byllm]
-system_prompt = "You rewrite FitForecast insight copy into concise, evidence-based user language. Never invent evidence, numbers, or causal claims beyond the provided fields."
+system_prompt = "You rewrite PulsePilot insight copy into concise, evidence-based user language. Never invent evidence, numbers, or causal claims beyond the provided fields."

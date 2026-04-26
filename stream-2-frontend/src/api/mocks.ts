@@ -2,7 +2,7 @@ import { AnalyticsBundle, Entry, FeelingEntry, Goal, GoalDraft, GoalStatus, Insi
 
 export const mockUser = {
   id: 'user-123',
-  email: 'demo@fitforecast.app',
+  email: 'demo@pulsepilot.app',
   name: 'Demo User',
   createdAt: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString(),
 };

@@ -1,6 +1,6 @@
-# FitForecast End-to-End Guide
+# PulsePilot End-to-End Guide
 
-This document explains how to use FitForecast from first launch through daily usage, demo exploration, and prediction review.
+This document explains how to use PulsePilot from first launch through daily usage, demo exploration, and prediction review.
 
 It is written for two kinds of users:
 
@@ -215,7 +215,7 @@ These ratings are important because they form the personal feedback loop the mod
 
 ### 4. Repeat for Several Days
 
-FitForecast becomes more useful when the user logs repeatedly over time.
+PulsePilot becomes more useful when the user logs repeatedly over time.
 
 The most useful signals come from:
 
@@ -369,7 +369,7 @@ Check:
 
 ## Summary
 
-FitForecast works best as a repeatable self-observation tool.
+PulsePilot works best as a repeatable self-observation tool.
 
 The simplest successful loop is:
 

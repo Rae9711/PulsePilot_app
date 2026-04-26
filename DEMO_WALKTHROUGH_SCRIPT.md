@@ -1,4 +1,4 @@
-# FitForecast Complete Demo Walkthrough Script
+# PulsePilot Complete Demo Walkthrough Script
 
 Use this as a read-aloud script during your final demo and video recording.
 
@@ -21,7 +21,7 @@ Use this as a read-aloud script during your final demo and video recording.
 
 Say:
 
-Hi everyone, this is FitForecast. The core problem we wanted to solve is that most fitness advice is generic, but people respond differently to workouts, meals, timing, and stress. We built a personalization-first app that helps users discover what works for their own body and routine. Today I will walk through the landing page, the full product flow, and show how insights change across different users.
+Hi everyone, this is PulsePilot. The core problem we wanted to solve is that most fitness advice is generic, but people respond differently to workouts, meals, timing, and stress. We built a personalization-first app that helps users discover what works for their own body and routine. Today I will walk through the landing page, the full product flow, and show how insights change across different users.
 
 ## 1) Landing Page Walkthrough (0:45 - 1:30)
 
@@ -194,7 +194,7 @@ At the beginning of the semester, our goal was to help people connect daily habi
 
 Say:
 
-FitForecast helps people move from generic advice and guesswork to personal, data-informed fitness decisions. Thank you.
+PulsePilot helps people move from generic advice and guesswork to personal, data-informed fitness decisions. Thank you.
 
 ---
 
