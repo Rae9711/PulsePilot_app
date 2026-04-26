@@ -15,7 +15,7 @@
     "seed": "tsx seeds/seed.ts"
   },
   "engines": {
-    "node": ">=18.18.0"
+    "node": "20.x"
   },
   "dependencies": {
     "@prisma/client": "^5.9.1",
