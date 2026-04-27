@@ -28,3 +28,10 @@ export const allowedCorsOrigins = (process.env.CORS_ORIGIN ?? '')
   .split(',')
   .map((value) => value.trim())
   .filter(Boolean);
+
+// Optional regex pattern — e.g. "https://pulse-pilot-.*\.vercel\.app"
+export const corsOriginPattern: RegExp | null = (() => {
+  const raw = process.env.CORS_ORIGIN_PATTERN;
+  if (!raw) return null;
+  try { return new RegExp(raw); } catch { return null; }
+})();

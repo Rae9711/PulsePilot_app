@@ -17,7 +17,7 @@ import profileRouter from './api/profile';
 import coachRouter from './api/coach';
 // Shared middleware and utilities keep cross-cutting concerns centralized.
 import { attachUser } from './middleware/auth';
-import { allowedCorsOrigins, jsonBodyLimit } from './config';
+import { allowedCorsOrigins, corsOriginPattern, jsonBodyLimit } from './config';
 import { logger } from './utils/logger';
 import {
   metricsHandler,
@@ -47,7 +47,12 @@ const app = express();
 // Enable CORS so the frontend can hit the API from other origins during development.
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedCorsOrigins.length === 0 || allowedCorsOrigins.includes(origin)) {
+    if (
+      !origin ||
+      (allowedCorsOrigins.length === 0 && !corsOriginPattern) ||
+      allowedCorsOrigins.includes(origin) ||
+      (corsOriginPattern !== null && corsOriginPattern.test(origin))
+    ) {
       callback(null, true);
       return;
     }
