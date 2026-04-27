@@ -44,14 +44,27 @@ dotenv.config();
 // Create the Express application instance that glues middleware and routes together.
 const app = express();
 
+const normalizeOrigin = (value: string) => value.replace(/\/+$/, '');
+
+const isTrustedVercelOrigin = (value: string) => {
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === 'https:' && parsed.hostname.endsWith('.vercel.app');
+  } catch {
+    return false;
+  }
+};
+
 // Enable CORS so the frontend can hit the API from other origins during development.
 app.use(cors({
   origin: (origin, callback) => {
+    const normalizedOrigin = origin ? normalizeOrigin(origin) : origin;
     if (
-      !origin ||
+      !normalizedOrigin ||
       (allowedCorsOrigins.length === 0 && !corsOriginPattern) ||
-      allowedCorsOrigins.includes(origin) ||
-      (corsOriginPattern !== null && corsOriginPattern.test(origin))
+      allowedCorsOrigins.includes(normalizedOrigin) ||
+      (corsOriginPattern !== null && corsOriginPattern.test(normalizedOrigin)) ||
+      isTrustedVercelOrigin(normalizedOrigin)
     ) {
       callback(null, true);
       return;

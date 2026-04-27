@@ -24,9 +24,11 @@ export const jsonBodyLimit = process.env.JSON_BODY_LIMIT ?? '1mb';
 export const allowDevAuthBypass = !isProduction && process.env.ALLOW_DEV_AUTH_BYPASS !== 'false';
 export const metricsApiKey = process.env.METRICS_API_KEY;
 
+const normalizeOrigin = (value: string) => value.trim().replace(/\/+$/, '');
+
 export const allowedCorsOrigins = (process.env.CORS_ORIGIN ?? '')
   .split(',')
-  .map((value) => value.trim())
+  .map(normalizeOrigin)
   .filter(Boolean);
 
 // Optional regex pattern — e.g. "https://pulse-pilot-.*\.vercel\.app"
