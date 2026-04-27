@@ -8,7 +8,7 @@ import {
   generateFitnessPlanNarrative,
   type NutritionEstimate,
 } from '../services/llm';
-import { buildPersonalizationSummary } from '../services/personalization';
+import { buildPersonalizationSummary, type PersonalizationSummary } from '../services/personalization';
 import { isChineseLanguage, resolveRequestLanguage } from '../utils/language';
 
 const router = Router();
@@ -34,6 +34,47 @@ const calcBmr = (gender: string, weightKg: number, heightCm: number, age: number
 const calcTdee = (bmr: number, activityLevel: string): number => {
   return bmr * (ACTIVITY_MULTIPLIERS[activityLevel] ?? 1.55);
 };
+
+const buildFallbackPersonalizationSummary = (zh: boolean): PersonalizationSummary => ({
+  generatedAt: new Date().toISOString(),
+  coachingMode: 'build',
+  riskLevel: 'medium',
+  profileMemory: {
+    consistency30d: 0,
+    bestWorkoutHour: null,
+    avgPostEnergy: 0,
+    avgPostStress: 0,
+  },
+  outcomeFocus: {
+    bestNextAction: zh
+      ? '先保持稳定记录，本周固定 3-4 天训练时间。'
+      : 'Keep logging consistently and lock in 3-4 repeatable workout slots this week.',
+    expectedBenefit: zh
+      ? '数据更稳定后，系统可以给出更精准的个性化建议。'
+      : 'More stable data will improve personalization quality and recommendation accuracy.',
+    confidence: 0.3,
+    confidenceLabel: 'low',
+    evidence: [{ label: zh ? '数据状态' : 'Data status', value: zh ? '回退模式' : 'fallback mode' }],
+  },
+  recommendations: [],
+  weeklyExperiments: [],
+  weeklyRecap: {
+    wins: [],
+    misses: [],
+    nextFocus: zh
+      ? '先建立稳定节奏，再逐步提高训练强度。'
+      : 'Rebuild consistency first, then increase intensity progressively.',
+  },
+  weightPerformanceLink: {
+    summary: zh
+      ? '当前数据不足，暂时无法生成体重与表现的关联分析。'
+      : 'Not enough data to compute weight-performance linkage yet.',
+    correlation: null,
+    confidence: 0.2,
+    confidenceLabel: 'low',
+    evidence: [{ label: zh ? '数据状态' : 'Data status', value: zh ? '数据不足' : 'insufficient data' }],
+  },
+});
 
 // ── Plan generation ─────────────────────────────────────────────────────────
 
@@ -400,11 +441,18 @@ router.post('/chat', async (req: Request, res: Response) => {
 
   try {
     // Fetch plan and profile for system context
-    const [plan, profile, personalization] = await Promise.all([
+    const [plan, profile] = await Promise.all([
       prisma.fitnessPlan.findUnique({ where: { userId } }),
       prisma.userProfile.findUnique({ where: { userId } }),
-      buildPersonalizationSummary(userId, language),
     ]);
+
+    let personalization: PersonalizationSummary;
+    try {
+      personalization = await buildPersonalizationSummary(userId, language);
+    } catch (personalizationErr) {
+      logger.warn('coach chat personalization fallback', { err: personalizationErr, userId });
+      personalization = buildFallbackPersonalizationSummary(zh);
+    }
 
     // Fetch today's messages only for context (daily reset)
     const todayStart = new Date();
@@ -653,13 +701,15 @@ router.get('/personalization-summary', async (req: Request, res: Response) => {
   const userId = (req as any).userId as string;
   if (!userId) return res.status(401).json({ message: 'Unauthorized' });
 
+  const language = resolveRequestLanguage(req);
+  const zh = isChineseLanguage(language);
+
   try {
-    const language = resolveRequestLanguage(req);
     const summary = await buildPersonalizationSummary(userId, language);
     return res.json(summary);
   } catch (err) {
-    logger.error('personalization summary failed', { err });
-    return res.status(500).json({ message: 'Internal server error' });
+    logger.warn('personalization summary fallback', { err, userId });
+    return res.json(buildFallbackPersonalizationSummary(zh));
   }
 });
 
